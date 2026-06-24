@@ -1,0 +1,14 @@
+{
+  "name": "binance-square-raffle-tool",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node src/server.js",
+    "scan": "node src/scan.js",
+    "verify": "node src/self-check.js"
+  },
+  "dependencies": {
+    "playwright": "^1.55.0"
+  }
+}

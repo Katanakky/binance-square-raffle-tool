@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>币安广场抽奖工具</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="hero">
+        <div>
+          <p class="eyebrow">本地抽奖名单筛选器</p>
+          <h1>币安广场抽奖工具</h1>
+          <p class="summary">先打开目标帖子并登录或完成地区确认，再直接读取帖子引用列表和评论列表接口。工具只保留已一键三连用户。</p>
+        </div>
+        <div class="status-pill" id="serverState">待开始</div>
+      </section>
+
+      <section class="panel controls">
+        <label class="field">
+          <span>目标帖子链接</span>
+          <input id="targetPostUrl" type="url" placeholder="https://www.binance.com/zh-CN/square/post/..." autocomplete="off" />
+        </label>
+        <label class="field small">
+          <span>最长分钟</span>
+          <input id="maxMinutes" type="number" min="1" max="60" value="20" />
+        </label>
+        <label class="field small">
+          <span>最多接口页</span>
+          <input id="maxPages" type="number" min="10" max="5000" value="500" />
+        </label>
+        <button id="openBtn" type="button">1 打开帖子窗口</button>
+        <button id="startBtn" type="button">2 读取数据</button>
+      </section>
+
+      <section class="panel steps">
+        <span>流程</span>
+        <strong>先点 1，去弹出的币安窗口完成登录或地区确认并确认能看到目标帖子；再点 2。</strong>
+      </section>
+
+      <section class="grid">
+        <section class="panel">
+          <div class="section-head">
+            <h2>已一键三连用户</h2>
+            <div class="actions">
+              <a id="csvLink" class="link disabled" href="#">CSV</a>
+              <a id="jsonLink" class="link disabled" href="#">JSON</a>
+            </div>
+          </div>
+          <div class="metrics" id="metrics">
+            <div><strong>0</strong><span>已一键三连</span></div>
+            <div><strong>0</strong><span>引用用户</span></div>
+            <div><strong>0</strong><span>评论用户</span></div>
+          </div>
+          <div class="raffle">
+            <label class="field small">
+              <span>抽奖人数</span>
+              <input id="raffleCount" type="number" min="1" max="999" value="10" />
+            </label>
+            <button id="raffleBtn" type="button" disabled>开始抽奖</button>
+            <span id="raffleStatus">读取结果后可抽奖</span>
+          </div>
+          <div id="winnerBox" class="winner-box" hidden>
+            <h2>中奖名单</h2>
+            <ol id="winnerRows" class="winners"></ol>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>用户</th>
+                  <th>置信度</th>
+                  <th>条件</th>
+                  <th>证据</th>
+                </tr>
+              </thead>
+              <tbody id="candidateRows">
+                <tr><td colspan="4" class="empty">还没有记录结果</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <aside class="panel side">
+          <h2>记录状态</h2>
+          <ol id="events" class="events">
+            <li>先打开帖子窗口并登录或完成地区确认。</li>
+          </ol>
+          <h2>结论提示</h2>
+          <ul id="notes" class="notes">
+            <li>记录结束后币安窗口会保留，方便你换帖子后再读一次。</li>
+          </ul>
+        </aside>
+      </section>
+    </main>
+    <script src="/app.js" type="module"></script>
+  </body>
+</html>
