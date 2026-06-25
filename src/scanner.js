@@ -18,7 +18,8 @@ const DEFAULT_PROFILE_DIR = path.join(RUNTIME_DIR, "chrome-profile");
 const DEFAULT_NOTIFICATION_URL = "https://www.binance.com/en/square/notifications";
 const DEFAULT_POST_URL = "https://www.binance.com/zh-CN/square";
 const QUOTE_PAGE_SIZE = 20;
-const COMMENT_PAGE_SIZE = 100;
+// Binance currently rejects comment/list requests with pageSize above 20.
+const COMMENT_PAGE_SIZE = 20;
 
 let activeContext = null;
 let activePage = null;

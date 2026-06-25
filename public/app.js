@@ -142,7 +142,7 @@ function renderEvents(events) {
 
 function renderResult(result, scanId) {
   currentCandidates = result.candidates || [];
-  updateMetrics(result.summary.totalCandidates, result.summary.quoteUsers || 0, result.summary.commentUsers || 0);
+  updateMetrics(result.summary.totalCandidates, result.summary.quoteUsers || 0, result.summary.matchedCommentUsers || 0);
   notesEl.innerHTML = result.notes.map((note) => `<li>${escapeHtml(note)}</li>`).join("");
   csvLink.href = `/api/download/${encodeURIComponent(scanId)}/csv`;
   jsonLink.href = `/api/download/${encodeURIComponent(scanId)}/json`;
